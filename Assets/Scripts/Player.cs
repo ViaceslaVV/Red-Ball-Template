@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float jumpSpeed;
-    public float movespeed;
+    public float jumpSpeed =10;
+    public float acceleration = 5;
+    
+    public float maxspeed = 10;
     Rigidbody2D rb;
+    public bool isGrounded;
     // Start is called before the first frame update
 
     void Start()
@@ -21,10 +24,34 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * jumpSpeed;
         }
-        var hor = Input.GetAxisRaw("Horizontal");
-        rb.velocity -= Vector2.right * hor * Time.deltaTime * movespeed;
+        if(Mathf.Abs(rb.velocity.x)< maxspeed)
+        {
+            var hor = Input.GetAxisRaw("Horizontal");
+            rb.velocity -= Vector2.right * hor * Time.deltaTime * acceleration ;
+        }
+        
          
     }
-   
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        isGrounded = true;
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.Die();
+        }
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.Die();
+        }
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        isGrounded = false;
+    }
+
 
 }

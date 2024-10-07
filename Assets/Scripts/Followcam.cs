@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+[DefaultExecutionOrder(-10000)]
+public class FollowCamera : MonoBehaviour
 {
     public float speed;
     public Transform target;
