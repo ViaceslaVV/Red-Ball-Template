@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Art/Showcase.unity
     guid: 417cbcb51dd90435b81b5c5228fc2eb8
+  - enabled: 1
+    path: Assets/New.unity
+    guid: 24502f02f8cae124bbdf76f025edaacf
   m_configObjects: {}

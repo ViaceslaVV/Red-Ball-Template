@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
         }
         if(Mathf.Abs(rb.velocity.x)< maxspeed)
         {
-            var hor = Input.GetAxisRaw("Horizontal");
-            rb.velocity -= Vector2.right * hor * Time.deltaTime * acceleration ;
+            float hor = Input.GetAxisRaw("Horizontal");
+            rb.velocity += Vector2.right * hor * Time.deltaTime * acceleration ;
         }
         
          
     }
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         isGrounded = true;
         if (other.gameObject.CompareTag("Enemy"))
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
             GameManager.instance.Die();
         }
     }
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         
         if(other.gameObject.CompareTag("Enemy"))
