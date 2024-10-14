@@ -22,6 +22,7 @@ public class teleporter : MonoBehaviour
         stayTime += Time.deltaTime;
         if(stayTime >= teleportTime)
         {
+            GameManager.instance.Win();
             SceneManager.LoadScene(nextScene);
         }
 
