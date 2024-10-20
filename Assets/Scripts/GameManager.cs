@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-        besttimerText.text = "Best: " + TimeSpan.FromSeconds(bestTime).ToString(@"mm\:ss");
+        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
+        besttimerText.text = "Best: " + TimeSpan.FromSeconds(bestTime).ToString(@"mm\:ss\:f");
     }
     void Update()
     {
         levelTime += Time.deltaTime;
         
 
-        timerText.text= TimeSpan.FromSeconds(levelTime).ToString(@"hh\:mm\:ss");
+        timerText.text= TimeSpan.FromSeconds(levelTime).ToString(@"mm\:ss\:f");
     }
 
     public void Win()
