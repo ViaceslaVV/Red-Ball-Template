@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]TMP_Text timerText;
-    [SerializeField] TMP_Text besttimerText;
+    [SerializeField] TMP_Text timerText;
+    [SerializeField] TMP_Text bestTimeText;
     public static GameManager instance;
     public float levelTime;
     float bestTime;
@@ -15,15 +15,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-        besttimerText.text = "Best: " + TimeSpan.FromSeconds(bestTime).ToString(@"mm\:ss\:f");
+        bestTime = PlayerPrefs.GetFloat("bestTime", float.MaxValue);
+        bestTimeText.text = "Best:" + TimeSpan.FromSeconds(bestTime).ToString(@"mm\:ss\:f");
     }
+
     void Update()
     {
         levelTime += Time.deltaTime;
-        
-
-        timerText.text= TimeSpan.FromSeconds(levelTime).ToString(@"mm\:ss\:f");
+        timerText.text = TimeSpan.FromSeconds(levelTime).ToString(@"mm\:ss\:f");
     }
 
     public void Win()
@@ -31,11 +30,10 @@ public class GameManager : MonoBehaviour
         if (levelTime < bestTime)
         {
             bestTime = levelTime;
-            PlayerPrefs.GetFloat("BestTime", bestTime);
+            PlayerPrefs.SetFloat("bestTime", bestTime);
         }
-
-        
     }
+
     public async void Die()
     {
         await new WaitForSeconds(2f);

@@ -4,15 +4,51 @@ using UnityEngine;
 
 public class Movingenemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed = 2f;         
+    public float moveDistance = 3f;   
+
+    private Vector2 startingPosition; 
+    
+    private bool movingForward = true;
+    private bool movingBackward = true;
+    
+
     void Start()
     {
         
+        startingPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        MoveEnemy();
+    }
+
+    void MoveEnemy()
+    {
         
+        if (movingForward)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+            
+            if (Vector2.Distance(startingPosition, transform.position) >= moveDistance)
+            {
+                movingForward = false;
+            }
+        }
+        
+        else
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+
+            
+            if (Vector2.Distance(startingPosition, transform.position) <= 0.1f)
+            {
+                movingForward = true;
+            }
+        }
+        
+
     }
 }

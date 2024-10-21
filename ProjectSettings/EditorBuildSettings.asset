@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Art/Showcase.unity
     guid: 417cbcb51dd90435b81b5c5228fc2eb8
+  - enabled: 1
+    path: Assets/Snene/Water level.unity
+    guid: 821c58e052940204094ecb65013c6d70
+  - enabled: 1
+    path: Assets/Snene/Caves.unity
+    guid: daa1c430c233fe74b9a5c03357f6b82c
   - enabled: 1
     path: Assets/Snene/New.unity
     guid: 24502f02f8cae124bbdf76f025edaacf
