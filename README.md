@@ -1,4 +1,5 @@
-# Red-Ball-Template
+# Red Ball
+
 Assets to get started making physics 2d platformer. Inspired by Red Ball, Bounce Tales. Made for Unity 2022.3 and Sprite Shape.
 The background is from Kenney.nl
 
